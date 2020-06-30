@@ -35,7 +35,8 @@ ensb_pred$week_ending <- ensb_pred$proj
 ensb_pred$proj <- "Ensemble"
 exclude <- c(
   "Ecuador", "Cameroon", "United_States_of_America",
-  "Sudan", "Yemen", "Democratic_Republic_of_the_Congo", "Mauritania"
+  "Sudan", "Yemen", "Democratic_Republic_of_the_Congo", "Mauritania",
+  "Spain"
 )
 
 ensb_pred <- ensb_pred[! ensb_pred$country %in% exclude, ]
@@ -298,7 +299,7 @@ purrr::iwalk(
 ###################
 ##### Reporting Trends
 ### col -> column to scale
-x <- readr::read_rds("DeCa_Std_Ratio_plot_2020-06-21.rds")
+x <- readr::read_rds("DeCa_Std_Ratio_plot_2020-06-28.rds")
 x <- x[! names(x) %in% exclude]
 max_deaths <- purrr::map_dfr(x, ~ max(.[["D_t"]]), .id = "country")
 max_deaths <- tidyr::gather(max_deaths, country, max_deaths)
